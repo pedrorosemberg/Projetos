@@ -1,1 +1,6 @@
 .qodo
+
+venv
+@venv
+/venv
+
