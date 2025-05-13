@@ -1,0 +1,49 @@
+1. Alterar a responsividade da interface gráfica, fazendo com que ela mostre um resumo do detalhamento do pedido como se fosse uma NF-e.
+
+2. Pedir o CEP antes das demais informações de endereço e utilizar a api do viacep para validar e retornar as informações baseadas no CEP digitado (com redundância para funcionar caso o usuário digite com ou sem caracteres diferentes dos números).
+
+3. Ao clicar em Finalizar o Pedido, mostra uma "fila" com os pedidos com as informações do pedido, podendo exportar em pdf a NF-e.
+
+4. Esse projeto precisa ser funcional para que seja mostrado de forma educacional.
+
+5. Vamos alterar os códigos para que seja possível adicionar, editar e retirar os produtos incluídos no "carrinho de pedido", para termos pedidos com mais pizzas, de vários sabores e tamanhos ou vários refrigerantes em um único pedido.
+
+6. Vamos adicionar detalhes do status do pedido, com as seguintes informações:
+
+a. Previsão de entrega: a previsão deve se basear na previsão de pedido de outros pedidos (aproximadamente 45min para fazer cada pizza), mais na distância entre o endereço de entrega, até a pizzaria (considere o endereço "R. Bernardo Ferreira da Cruz, 52 - Venda Nova, Belo Horizonte - MG, 31610-120"). Vamos limitar a distância de entrega a até 10km do endereço da pizzaria (endereços acima de 10km deve mostrar uma notificação informando isso ao usuário).
+
+b. Status atual: Baseando-se no período de entrega dos pedidos, retorne um feedback visual verde, para entregas dentro do prazo de entrega, amarelo para pedidos que provavelmente irão atrasar, laranja para pedidos que já extrapolaram o prazo de entrega, azul para pedidos entregues e vermelho para cancelados.
+
+c. Atualização da entrega: 
+1. Pedido realizado - logo após o pedido ter sido feito;
+2. Fazendo o pedido - automaticamente de 2 a 3 minutos após o pedido ter sido feito;
+3. Pedido pronto - Alteração manual pelo atendente;
+4. Pedido saiu para a entrega - Alteração manual pelo atendente;
+5. Pedido entregue - Alteração manual pelo atendente (assim que for classificado como "Pedido entregue", deve atualizar o status atual para "Pedido Entregue", em azul.
+
+7. Adicione também um valor de "Taxa de entrega", que deve ser somado separado e ser possível editar enquanto o programa estiver rodando.
+
+8. Para cada pedido deve ser salvo um logo detalhado contendo todas as informações do pedido, informações de pagamento (cartão de crédito ou débito, pix, dinheiro, VR ou VA - as informações de pagamento deverão ser informadas no momento da realização do pedido), atualizações da entrega (com carimbo de data e hora), atualização da entrega (com carimbo de data e hora), previsão de entrega e status atual - tudo com carimbo de data e hora individual).
+
+9. Log visual e feedback ao usuário: mantenha um conjunto de logs em tempo real sempre visível par o usuário, alertando-o para possíveis demoras, atrasos ou tempos mais longos do que o normal em cada etapa e status; além de incluir feedback visual para informar o usuário de novas ações, erros e demais informações relevantes.
+
+10. Log persistente: adicione um botão para encerrar o programa que, ao ser assionado, cria um documento em pdf com todos os pedidos e logs dos pedidos individualmente, ou seja, cada página deve conter um pedido e as respectivas informações dos logs. O intuito desse arquivo é simular uma auditoria de contas e visa facilitar a conciliação bancária e recebíveis.
+
+11. Para ajudar na validação da distância do endereço da pizzaria para o endereço local, gere um mapa, utilizando leaflet com feedback visual em tempo real da seguinte forma: deixe o pin do endereço da pizzaria em azul (considere o endereço do local atual), deixe o pin de marcação do endereço de entrega em amarelo se for de 7,1 a 10km de distância em comparação com o endereço atual, deixe o pin verde, se o endereço de entrega for menor que 7km e, por fim, deixe o pin em vermelho, caso o endereço de entrega seja igual ou superior a 10km. Inclua um raio de até 7km azul claro (para mostrar área de entrega).
+
+12. Como o objetivo é só ser uma demonstração, faça com que a página de cliente (que possibilita fazer o pedido e interagir com os produtos disponíveis) esteja disponível somente quando o servidor estiver rodando. Essa página do cliente deve ser moderna e atrativa, parecendo com a página do Ifood.
+
+13. Já o lado do restaurante, deve ser minimalista, simples, intuitivo e possuir todo o tipo de de feedback visual possível, para erros, alertas, transações e informações úteis.
+
+14. Na área da loja, separe as funcionalidades em um menu lateral, sendo abertas ao clicar:
+a. Pedidos: Nessa área, deve ser possível realizar pedidos e vsualizar os pedidos realizados, o tempo de espera, prazo de entrega, carimbo de data e hora e atualizações das entregas.
+b. Produtos/Estoque: Nessa área, deve ser possível alterar produtos disponíveis, adicionando, editando e retirando os produtos.
+c. Status das entregas: Nessa área, vizualizamos os prazos de entrega dos pedidos, é possível verificar a fila de entrega, os endereços e as atualizações.
+d. Histórico de pedidos: Essa área deve ser um histórico dos pedidos, ficando salvo enquanto durar a sessão do servidor. Nessa parte, deve ser possível verificar todas as informações do pedido (pagamento, detalhes do cliente, entrega, carimbos de data e hora, atualizações de entrega e status), deve informar também em qual página foi realizado o pedido (se na página do cliente, retornar as informações do cliente, como email, nome e telefone; se for realizado na página da pizzaria, retorne também um código aleatório de 4 dígitos do atendente e o primeiro nome).
+e. Logs: Informações de erros, atualizações, status, conexão com o servidor, banco de dados e outros dados relevantes referentes à Sustentação Tecnológica do sistema.
+f. Financeiro: Informações financeiras da pizzaria, como pedidos realizados, entreadas, recebíveis e paines financeiros.
+g. Configurações: Painel de configurações. Adicione um botão de teste que, quando ativado, "gera" pedidos realizados na página de clientes e na página da pizzaria, fornecendo dados fictícios somente para testes, em todas as páginas e áreas.
+
+15. Como teste, deve ser possível realizar pedidos reais, tanto na página do cliente, quanto na página de pedidos da pizzaria.
+
+16. As páginas devem ter header com a logo da pizzaria e a navegação, de acordo com a página (se interna, da pizzaria; ou se externa, dos clientes) e footer padrão, com política de privacidade, termos de uso, copyrights e outras informações relevantes da Pizza Piaza LTDA.
